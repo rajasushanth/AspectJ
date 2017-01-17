@@ -1,4 +1,4 @@
-package com.comcast.aspects;
+package com.mycomp.aspects;
 
 public aspect Aspects {
 	

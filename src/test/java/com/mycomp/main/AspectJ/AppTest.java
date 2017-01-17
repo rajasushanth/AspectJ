@@ -1,4 +1,4 @@
-package com.comcast.main.AspectJ;
+package com.mycomp.main.AspectJ;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -1,4 +1,4 @@
-package com.comcast.main;
+package com.mycomp.main;
 
 /**
  * Hello world!
