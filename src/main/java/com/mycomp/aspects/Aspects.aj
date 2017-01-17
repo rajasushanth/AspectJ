@@ -2,7 +2,7 @@ package com.mycomp.aspects;
 
 public aspect Aspects {
 	
-	pointcut cover() : call(* com.comcast.main.App.printMessage());
+	pointcut cover() : call(* com.mycomp.*.*.*(..));
 	
 	before() : cover() {
 		System.out.println("Before method invoked");
