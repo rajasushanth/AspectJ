@@ -1,13 +1,22 @@
 package com.mycomp.aspects;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Before;
-
 public aspect Aspects {
 	
 	//This poincut advises all the classes which implements the interface ending with DAO
 	pointcut cover() : execution(* *.*.*.*DAO+.*(..));
+	
+	before() : cover() {
+		System.out.println(thisJoinPoint.getSignature().getDeclaringTypeName()+ "::" + thisJoinPoint.getSignature().getName()+" - Enters");
+	}
+	
+	after() returning() : cover() {
+		System.out.println(thisJoinPoint.getSignature().getDeclaringTypeName()+ "::" + thisJoinPoint.getSignature().getName()+" -Exists");
+	}
+	
+	after() throwing() : cover() {
+		System.out.println(thisJoinPoint.getSignature().getDeclaringTypeName()+ "::" + thisJoinPoint.getSignature().getName()+" -Exists with exception");
+	}
+	
 	
 	/*@Around("cover()")
 	public Object aroundMethod(ProceedingJoinPoint jp){
@@ -22,21 +31,4 @@ public aspect Aspects {
 		}
 		return o;
 	}*/
-	
-	before() : cover() {
-		System.out.println("In Before method");
-		System.out.println(thisJoinPoint.getSignature().getDeclaringType()+ "::" + thisJoinPoint.getSignature().getName());
-	}
-	
-	after() returning() : cover() {
-		System.out.println(thisJoinPoint.getSignature());
-		System.out.println("In After method");
-	}
-	
-	after() throwing() : cover() {
-		System.out.println(thisJoinPoint.getSignature());
-		System.out.println("In Exception method");
-		
-	}
-
 }
